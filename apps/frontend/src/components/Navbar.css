@@ -1,8 +1,8 @@
 :root {
-  --primary-color: #3c009d;
-  --secondary-color: #4c00b4;
-  --hover-color: #320078;
-  --background-color: #f5f5f5;
+  --primary-color: #0f1725;
+  --secondary-color: #10a37f;
+  --hover-color: #0d8a6d;
+  --background-color: #0b111a;
   --transition-duration: 0.3s;
 }
 .navbar {
@@ -10,8 +10,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background: linear-gradient(135deg, #2A00B7, #42006C);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(11, 17, 26, 0.88);
+  border-bottom: 1px solid rgba(156, 175, 203, 0.24);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
   z-index: 10;

@@ -1,29 +1,161 @@
+:root {
+  --bg-0: #0b111a;
+  --bg-1: #111826;
+  --bg-2: #162132;
+  --panel: rgba(17, 24, 38, 0.86);
+  --panel-strong: rgba(11, 17, 26, 0.92);
+  --text-1: #e8eef8;
+  --text-2: #a9b4c5;
+  --border: rgba(156, 175, 203, 0.22);
+  --accent: #10a37f;
+  --accent-hover: #0d8a6d;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+}
+
+#root {
+  position: relative;
+  isolation: isolate;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-1);
+  background:
+    radial-gradient(1200px 700px at 5% -20%, #1d3048 0%, transparent 60%),
+    radial-gradient(900px 600px at 98% 0%, #112235 0%, transparent 62%),
+    linear-gradient(180deg, var(--bg-1), var(--bg-0));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+a,
+p,
+label,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+span {
+  color: var(--text-1);
+}
+
+[class*="container"],
+[class*="box"],
+[class*="card"],
+form {
+  background-color: transparent;
+}
+
+.home-container,
+.admin-container,
+.user-container,
+.about-container,
+.contact-container,
+.features-container,
+.register-container,
+.single-phase-container {
+  background: transparent !important;
+}
+
+.app-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.floating-bits {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floating-bit {
+  position: absolute;
+  left: var(--bit-left);
+  bottom: -8vh;
+  width: var(--bit-size);
+  height: var(--bit-size);
+  border-radius: 999px;
+  opacity: var(--bit-opacity);
+  background: radial-gradient(circle at 30% 30%, rgba(173, 255, 236, 0.95), rgba(16, 163, 127, 0.3) 70%, rgba(16, 163, 127, 0.05));
+  box-shadow: 0 0 24px rgba(16, 163, 127, 0.35);
+  animation: floatBit var(--bit-duration) linear var(--bit-delay) infinite;
+}
+
+@keyframes floatBit {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.85);
+  }
+  50% {
+    transform: translate3d(var(--bit-drift), -58vh, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(calc(var(--bit-drift) * -0.6), -120vh, 0) scale(0.9);
+  }
+}
+
+.box,
+.phase-box,
+.login-container,
+.login-box,
+.register-box,
+.details-box,
+.user-register-container {
+  background: var(--panel) !important;
+  color: var(--text-1) !important;
+  border: 1px solid var(--border) !important;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.38) !important;
+}
+
+input,
+select,
+textarea {
+  background: var(--panel-strong) !important;
+  color: var(--text-1) !important;
+  border: 1px solid var(--border) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-2);
+}
+
+button,
+.btn,
+.box-button,
+.login-button,
+.user-register-button {
+  background: var(--accent) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+button:hover,
+.btn:hover,
+.box-button:hover,
+.login-button:hover,
+.user-register-button:hover {
+  background: var(--accent-hover) !important;
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  height: 100vh;
-  background: linear-gradient(#2A00B7, #42006C);
-}
-
-
-
-h2 {
-  text-align: center;
-  margin-top: 50px;
+  font-family: Consolas, Menlo, Monaco, "Courier New", monospace;
 }
