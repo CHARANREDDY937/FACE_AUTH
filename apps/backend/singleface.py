@@ -316,7 +316,10 @@ app = Flask(__name__)
 CORS(app)
 
 # MongoDB configuration
-client = MongoClient("mongodb+srv://chary296:database@cluster.ru5lk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster")  # Use your MongoDB URI here
+mongo_uri = os.getenv("MONGO_URI")
+if not mongo_uri:
+    raise ValueError("MONGO_URI environment variable is required.")
+client = MongoClient(mongo_uri)
 db = client["FaceRecognition_singles"]
 fs = gridfs.GridFS(db)
 users_collection = db["users"]
@@ -552,3 +555,4 @@ def train_model_route():
 
 if __name__ == "__main__":
     app.run(debug=True)
+

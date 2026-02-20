@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import "./UserPhase3.css";
+import { API_CONFIG } from "../config/api";
 
-const UserPhase3 = () => {
+const AdminPhase3 = () => {
   const [videoFeed, setVideoFeed] = useState("");
-
-  const serverUrl = "http://127.0.0.1:5002"; // Replace with your Flask server IP
+  const serverUrl = API_CONFIG.crowdApiUrl;
 
   const startFeed = async () => {
     try {
-      const response = await fetch(`${serverUrl}/start`, { method: "POST" });
-      const data = await response.json();
-      console.log("Feed started:", data);
+      await fetch(`${serverUrl}/start`, { method: "POST" });
       setVideoFeed(`${serverUrl}/video_feed`);
     } catch (error) {
       console.error("Error starting feed:", error);
@@ -19,9 +17,7 @@ const UserPhase3 = () => {
 
   const stopFeed = async () => {
     try {
-      const response = await fetch(`${serverUrl}/stop`, { method: "POST" });
-      const data = await response.json();
-      console.log("Feed stopped:", data);
+      await fetch(`${serverUrl}/stop`, { method: "POST" });
       setVideoFeed("");
     } catch (error) {
       console.error("Error stopping feed:", error);
@@ -36,14 +32,10 @@ const UserPhase3 = () => {
         <button onClick={stopFeed}>Stop</button>
       </div>
       <div className="video-container">
-        {videoFeed ? (
-          <img src={videoFeed} alt="Video feed will appear here" />
-        ) : (
-          <p>Video feed will appear here</p>
-        )}
+        {videoFeed ? <img src={videoFeed} alt="Video feed will appear here" /> : <p>Video feed will appear here</p>}
       </div>
     </div>
   );
 };
 
-export default UserPhase3;
+export default AdminPhase3;
